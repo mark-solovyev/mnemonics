@@ -32,10 +32,11 @@ gulp.task("serverReload", (done)=> {
     browserSync.reload();
     done();
 });
-
+// default task
+gulp.task("default", gulp.series("pug", "scss", "compile", "browser-sync"));
+// watch
 gulp.watch("./src/views", gulp.series("pug", "serverReload"));
 gulp.watch("./src/styles", gulp.series("scss", "serverReload"));
 gulp.watch("./src/scripts", gulp.series("compile", "serverReload"));
 
 
-gulp.task("default", gulp.series("pug", "scss", "compile", "browser-sync"));
